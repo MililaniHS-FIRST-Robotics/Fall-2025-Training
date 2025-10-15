@@ -1,7 +1,7 @@
 package frc.robot;
 
 public class cheese {
-    public void cheese(int yes0){
+    public cheese(){
         System.out.println ("fffffffff");
     }
 }

@@ -1,5 +1,12 @@
 package frc.robot.Commands;
 
-public class PivotCommands {
-    
+import edu.wpi.first.wpilibj.GenericHID;
+import frc.robot.Subsystems.*;
+public class PivotCommand {
+    PivotSubsystem pivotSubsystem;
+    GenericHID controller;
+    public PivotCommand(PivotSubsystem pivotSubsystem, GenericHID controller){
+        this.pivotSubsystem = pivotSubsystem;
+        this.controller = controller;
+    }
 }

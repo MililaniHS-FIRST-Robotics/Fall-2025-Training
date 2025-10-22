@@ -14,7 +14,7 @@ import frc.robot.Commands.pivotCommand;
 import frc.robot.Subsystems.pivotSubsystem;
 
 public class RobotContainer {
-  private pivotSubsystem pivotSubsystem = new pivotSubsystem();
+  private pivotSubsystem PivotSubsystem = new pivotSubsystem();
   private GenericHID controller0 = new GenericHID(0);
   private GenericHID controller1 = new GenericHID(1);
 
@@ -28,7 +28,7 @@ public class RobotContainer {
 
   private void configureBindings() {
     new JoystickButton(controller0, Constants.GamepadConstants.kAButtonPort)
-    .onTrue(new pivotCommand(pivotSubsystem, controller0));
+    .onTrue(new pivotCommand(PivotSubsystem, controller0));
   }
 
   public Command getAutonomousCommand() {

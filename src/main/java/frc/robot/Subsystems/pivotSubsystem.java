@@ -4,13 +4,14 @@ import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.motorcontrol.Spark;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class pivotSubsystem {
+public class pivotSubsystem extends SubsystemBase{
     private SparkMax motor1;
     private SparkMax motor2;
     public pivotSubsystem(){
         motor1 = new SparkMax(0, MotorType.kBrushless);
-        motor2 = new SparkMax(0, MotorType.kBrushless);
+        motor2 = new SparkMax(1, MotorType.kBrushless);
     }
 
     public void setPowe(double power){

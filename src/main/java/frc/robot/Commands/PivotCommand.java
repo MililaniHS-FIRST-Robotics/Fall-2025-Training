@@ -3,6 +3,7 @@ package frc.robot.Commands;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Subsystems.PivotSubsystem;
+import frc.robot.Constants;
 
 public class PivotCommand extends Command {
     PivotSubsystem pivotSubsystem;
@@ -34,7 +35,7 @@ public class PivotCommand extends Command {
 
     @Override
     public boolean isFinished () {
-        return false;
+        return !controller.getRawButton(Constants.GamepadConstants.kAButtonPort);
     }
     
 }

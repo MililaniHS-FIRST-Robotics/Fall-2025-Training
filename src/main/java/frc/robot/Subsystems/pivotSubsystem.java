@@ -10,8 +10,8 @@ public class pivotSubsystem extends SubsystemBase{
     private SparkMax motor1;
     private SparkMax motor2;
     public pivotSubsystem(){
-        motor1 = new SparkMax(0, MotorType.kBrushless);
-        motor2 = new SparkMax(1, MotorType.kBrushless);
+        motor1 = new SparkMax(2, MotorType.kBrushless);
+        motor2 = new SparkMax(3, MotorType.kBrushless);
     }
 
     public void setPowe(double power){

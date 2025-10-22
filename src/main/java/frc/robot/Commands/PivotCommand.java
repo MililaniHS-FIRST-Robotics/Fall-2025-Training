@@ -31,7 +31,7 @@ public class PivotCommand extends Command{
     @Override
     public boolean isFinished(){
         //The requirement to end the command
-        return controller.getRawButton(Constants.GamepadConstants.kAButtonPort);
+        return !controller.getRawButton(Constants.GamepadConstants.kAButtonPort);
     }
 
 }

@@ -20,6 +20,6 @@ public class PivotSubsystem extends SubsystemBase {
     motor1.set(power);
    }
    public void setMotor2(double power){
-    motor2.set(power);
+    motor2.set(power);   
    }
 }

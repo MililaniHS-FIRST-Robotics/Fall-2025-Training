@@ -34,6 +34,6 @@ pivotSubsystem.setMotor2Power(1);
 
     @Override
     public boolean isFinished() {
-        return controller.getRawButton(Constants.GamepadConstants.kAButtonPort);
+        return !controller.getRawButton(Constants.GamepadConstants.kAButtonPort);
     }
 }

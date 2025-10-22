@@ -3,7 +3,9 @@ package frc.robot.Subsystems;
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 
-public class PivotSubsystem {
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
+public class PivotSubsystem extends SubsystemBase {
     private SparkMax motor1;
     private SparkMax motor2;
    public PivotSubsystem(){

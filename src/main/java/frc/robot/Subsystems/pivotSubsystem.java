@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class pivotSubsystem extends SubsystemBase{
-    private double targetPosition, error, kp, ki, kd, kff, output;
+    private double targetPosition, error, kp, ki, kd, kff, output, previous, Derivative, Integral;
     private SparkMax motor1;
     private SparkMax motor2;
     private RelativeEncoder encoder1;
@@ -22,9 +22,13 @@ public class pivotSubsystem extends SubsystemBase{
 
         targetPosition = 40;
         kp = .1;
-        ki = 0;
+        ki = 0.0001;
         kd = 0;
         kff = 0;
+        Integral = 0;
+        Derivative = 0;
+        previous = 0;
+        encoder1.setPosition(0);
     }
 
     public void setPowe(double power){
@@ -44,8 +48,10 @@ public class pivotSubsystem extends SubsystemBase{
 
     public void periodic(){
         error = targetPosition - getMotorPosition();
-        output = error * kp + kff;
-
-        
+        Integral += error;
+        Derivative = (getMotorPosition() - previous)/0.02;
+        output = (error * kp) + (Integral * ki) + (Derivative * kd) + kff;
+        setMotor1(output);
+        previous = getMotorPosition();
     }
 }

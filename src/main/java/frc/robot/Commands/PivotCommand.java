@@ -27,7 +27,7 @@ public class PivotCommand extends Command{
     @Override
     public void end(boolean interupted){
         //What happens at the end of the program (Usually just a shutdown)
-        pivotSubsystem.setPower(0);
+        // pivotSubsystem.setPower(0);
     }
     @Override
     public boolean isFinished(){

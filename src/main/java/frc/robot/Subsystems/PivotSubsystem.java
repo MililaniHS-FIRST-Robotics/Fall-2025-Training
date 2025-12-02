@@ -12,7 +12,7 @@ public class PivotSubsystem extends SubsystemBase{
 
     private AbsoluteEncoder encoder1;
 
-    private double targetPosition, error, kp, ki, kd, kff, output;
+    private double targetPosition, error, kp, ki, kd, kff, Integral, Derivative, output, previousPosition;
     public PivotSubsystem(){
        motor1 = new SparkMax(2, MotorType.kBrushless); //ID are placeholders
        motor2 = new SparkMax(3, MotorType.kBrushless);
@@ -24,6 +24,7 @@ public class PivotSubsystem extends SubsystemBase{
         kd = 0;
         kff = 0;
         output = 0;
+        previousPosition = 0;
 
 
     }
@@ -33,11 +34,18 @@ public class PivotSubsystem extends SubsystemBase{
     public void setMotor2(double power){
         motor2.set(power);
     }
-    public double getMotorPosition(){
+    public double getMotor1Position(){
         return encoder1.getPosition();
     }
+
     public void periodic(){
-        error = targetPosition - getMotorPosition();
-        output = error * kp + kff;
+        error = targetPosition - getMotor1Position();
+        Integral += error;
+        Derivative = (getMotor1Position() - previousPosition)/0.02;
+
+        output = error * kp + Integral * ki + Derivative * kd + kff
+        setMotor1(output);
+        previousPosition = getMotor1Position()
+    
     }
 }

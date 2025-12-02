@@ -5,6 +5,6 @@ import com.revrobotics.spark.SparkMax;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class intakeSubsystem extends SubsystemBase{
-    double cheese;   //idk im bored
+    
     
 }

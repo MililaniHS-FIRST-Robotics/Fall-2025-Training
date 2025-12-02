@@ -2,7 +2,9 @@ package frc.robot.Subsystems;
 
 import com.revrobotics.spark.SparkMax;
 
-public class intakeSubsystem {
-    
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
+public class intakeSubsystem extends SubsystemBase{
+    double cheese;   //idk im bored
     
 }

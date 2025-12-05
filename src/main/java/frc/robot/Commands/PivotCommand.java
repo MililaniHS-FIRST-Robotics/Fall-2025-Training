@@ -19,17 +19,23 @@ public class PivotCommand extends Command{
     }
 
     @Override
-    public void execute() {
-        pivotSubsystem.setPower(0.025);
+    public void initialize(){
+        //Start (once)
     }
-
     @Override
-    public void end (boolean interrupted) {
-        pivotSubsystem.shutdown();
+    public void execute(){
+        //Loop
+        pivotSubsystem.setMotor1(-1);
+        pivotSubsystem.setMotor2(1);
     }
-
     @Override
-    public boolean isFinished() {
+    public void end(boolean interupted){
+        //What happens at the end of the program (usually just a shutdown)
+        pivotSubsystem.setPower(0);
+    }
+    @Override
+    public boolean isFinished(){
+        //The requirement to end the command
         return !controller.getRawButton(Constants.GamepadConstants.kAButtonPort);
     }
 }

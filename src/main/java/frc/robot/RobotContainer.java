@@ -10,12 +10,15 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.Commands.PivotCommand;
-import frc.robot.Subsystems.PivotSubsystem;
+
+import frc.robot.Subsystems.*;
+import frc.robot.Commands.*;
+import frc.robot.Constants.GamepadConstants;
 
 public class RobotContainer {
   //create the instance of the subsystem 
   private PivotSubsystem pivotSubsystem = new PivotSubsystem();
+  private IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
   private GenericHID controller0 = new GenericHID(0);
   private GenericHID controller1 = new GenericHID(1);
 
@@ -28,12 +31,26 @@ public class RobotContainer {
     //Put your buttons
     new JoystickButton(controller0, Constants.GamepadConstants.kAButtonPort)
     .onTrue(new PivotCommand(pivotSubsystem, controller0));
+    new JoystickButton(controller0, Constants.GamepadConstants.kBButtonPort)
+    .onTrue(new PivotReverseCommand(pivotSubsystem, controller0));
+  
+    new JoystickButton(controller0, Constants.GamepadConstants.kRightBumperPort)
+    .onTrue(new IntakeCommand(intakeSubsystem, controller0));
+    new JoystickButton(controller0, Constants.GamepadConstants.kRightTriggerPort)
+    .onTrue(new IntakeReverseCommand(intakeSubsystem, controller0));
 
 
 
 
+    // new JoystickButton(controller0, Constants.GamepadConstants.kDpadUp)
+    // .onTrue(new PivotUpCommand(pivotSubsystem, controller0));
+    // new JoystickButton(controller0, Constants.GamepadConstants.kDpadDown)
+    // .onTrue(new PivotDownCommand(pivotSubsystem, controller0));
 
 
+
+
+  
 
 
 

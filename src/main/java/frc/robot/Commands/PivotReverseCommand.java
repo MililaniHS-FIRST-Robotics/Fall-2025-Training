@@ -6,12 +6,12 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
 import frc.robot.Subsystems.PivotSubsystem;
-public class PivotCommand extends Command{
+public class PivotReverseCommand extends Command{
     PivotSubsystem pivotSubsystem;
     GenericHID controller; 
 
 
-    public PivotCommand(PivotSubsystem pivotSubsystem, GenericHID controller) {
+    public PivotReverseCommand(PivotSubsystem pivotSubsystem, GenericHID controller) {
         this.pivotSubsystem = pivotSubsystem;
         this.controller = controller;
 
@@ -20,7 +20,7 @@ public class PivotCommand extends Command{
 
     @Override
     public void execute() {
-        pivotSubsystem.setPower(0.025);
+        pivotSubsystem.setPower(-0.025);
     }
 
     @Override
@@ -30,6 +30,6 @@ public class PivotCommand extends Command{
 
     @Override
     public boolean isFinished() {
-        return !controller.getRawButton(Constants.GamepadConstants.kAButtonPort);
+        return !controller.getRawButton(Constants.GamepadConstants.kBButtonPort);
     }
 }
